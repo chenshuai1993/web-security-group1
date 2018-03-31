@@ -2,21 +2,25 @@
 session_start();
 include_once 'db.class.php';
 
-function follow()
+follow($db);
+
+function follow($db)
 {
-    $followId     = $_GET['id'];
-    $userId       = $_SESSION['user_id'];
+    $followId     = $_POST['id'];
+    $userId       = isset($_SESSION['userid']) ? $_SESSION['userId'] : 100;
     $followSql    = "insert into fs(user_id,follow_id) value($userId,$followId),($followId,$userId)";
-    $smt = $db->prepare($sql);
+    $smt = $db->prepare($followSql);
     if($smt->execute()){
-        echo $smt->rowCount();
+        $res = ['msg'=>'成功','status'=>1,'data'=>''];
+        echo json_encode($res);
+        exit;
     }
 }
 
 function unfollow()
 {
-    $userId       = $_SESSION['user_id'];
-    $cancleUserId = $_GET['id'];
+    $userId       = $_SESSION['userid'];
+    $cancleUserId = $_POST['id'];
     $ids = $userId .','.$cancleUserId;
     $sql = "delete from user where id in ($ids)";
     $smt = $db->prepare($sql);

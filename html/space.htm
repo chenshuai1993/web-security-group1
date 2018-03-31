@@ -43,7 +43,7 @@
   	<h2 >张三丰</h2>
   	<p>微博：12322</p>
   	<p>粉丝：12322</p>
-  	<p><a href="#" class="btn btn-primary" role="button" id="follow">关注</a> <a href="#" class="btn btn-default" role="button">取消</a></p>
+  	<p><a href="javascript:;" class="btn btn-primary" role="button" id="follow" data-id="10">关注</a> <a href="javascript:;  " class="btn btn-default" role="button">取消</a></p>
   </div>
 </div>
 
@@ -77,6 +77,24 @@
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/holder.min.js"></script>
 <script type="text/javascript">
+$('body').on('click','#follow',function(){
 
+  var url = '../action.php';
+  var id  = $('#follow').data('id');
+  var data = {id:id};
+
+  $.ajax({
+    type:'post',
+    url: url,
+    data:data,
+    dataType:'json',
+    success:function(res){
+      alert(res);
+    },
+    error:function(request,status,err){
+      console.log(request);
+    }
+  });
+})
 </script>
 </body></html>
