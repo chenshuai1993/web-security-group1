@@ -56,7 +56,7 @@
 
         <?php if(isset($result['user_fs'])): ?>
         <?php  foreach ($result['user_fs'] as $key => $val): ?>
-           粉丝id:<?php echo $val['fs_id']; ?>&nbsp;
+                粉丝id:<a class="fs" id="<?php echo $val['fs_id']; ?>" href="javascript:;"><?php echo $val['fs_id']; ?></a>&nbsp;
         <?php endforeach; ?>
         <?php endif; ?>
 
@@ -84,5 +84,14 @@ $('body').on('click','#follow',function(){
     }
   });
 })
+
+
+
+    $(function(){
+        $(document).on('click','.fs',function(){
+            var id = $(this).attr('id');
+            window.location.href='http://localhost/web-security-group1/perInfo.php?uid='+id
+        })
+    })
 </script>
 </body></html>

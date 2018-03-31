@@ -8,7 +8,11 @@
 
 require('./db.class.php');
 
+
 $user_id = isset($_SESSION['userid']) ? $_SESSION['userid'] : 1;
+if($_GET['uid']){
+    $fs_id = $_GET['uid'];
+}
 
 if (!empty($_SESSION['userid'])) {
     $userInfo['userid'] = $_SESSION['user_id'];
