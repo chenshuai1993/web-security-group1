@@ -31,6 +31,17 @@
     
     
 用户关注
+    好友列表: 
+      方法名字    getFriends($userid); 
+      参数：      用户id
+      返回格式:  [
+                 status:  true or false
+                 message: xxxxx
+                 data:[
+                     //数据
+                 ]
+             ]
+
 
 用户点到关注好友的空间
 
