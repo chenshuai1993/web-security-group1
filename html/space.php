@@ -53,6 +53,15 @@
 
 	<hr />
 
+        <?php if($fs_id == 3): ?>
+            <form id="bbs"  action="http://localhost/web-security-group1/bbs" method="post">
+                内容:<input name="content" id="content" type="text">
+                <input name="to_userid" id="to_userid" type="hidden" value="3">
+                <input type="submit" value="提交" >
+            </form>
+        <?php endif; ?>
+
+
 
         <?php if(isset($result['user_fs'])): ?>
         <?php  foreach ($result['user_fs'] as $key => $val): ?>
