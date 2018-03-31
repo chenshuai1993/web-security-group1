@@ -7,11 +7,13 @@ follow($db);
 function follow($db)
 {
     $followId     = $_POST['id'];
-    $userId       = $_SESSION['userid'] ? $_SESSION['userId'] : 100;
+    $userId       = isset($_SESSION['userid']) ? $_SESSION['userId'] : 100;
     $followSql    = "insert into fs(user_id,follow_id) value($userId,$followId),($followId,$userId)";
     $smt = $db->prepare($followSql);
     if($smt->execute()){
-        echo $smt->rowCount();
+        $res = ['msg'=>'成功','status'=>1,'data'=>''];
+        echo json_encode($res);
+        exit;
     }
 }
 
