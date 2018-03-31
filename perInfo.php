@@ -7,7 +7,7 @@
  */
 
 
-$userid = isset($_SESSION['userid']) ? $_SESSION['userid'] : 1;
+$user_id = isset($_SESSION['userid']) ? $_SESSION['userid'] : 1;
 
 if (!empty($_SESSION['userid'])) {
     $userInfo['userid'] = $_SESSION['user_id'];
@@ -21,7 +21,7 @@ $lookUid = $_GET['uid'];
 
 require('./db.class.php');
 
-require('./html/space.php');
+#require('./html/space.php');
 
 
 $result  =[
