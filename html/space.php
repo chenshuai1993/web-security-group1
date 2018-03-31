@@ -29,7 +29,7 @@
             <a type="button" class="btn btn-default" role="button" href="login.htm">登录</a>
             <a type="button" class="btn btn-default" role="button" href="register.htm">注册</a>
         <?php } else { ?>
-            <p> 欢迎 <span class="label label-success"><?php echo $userInfo['user_name']; ?></span> ，<a href="#">退出</a></p>
+            <p> 欢迎 <span class="label label-success"><?php echo $result['user_info']['user_name']; ?></span> ，<a href="#">退出</a></p>
         <?php } ?>
 	</div>
       <div class="header">
