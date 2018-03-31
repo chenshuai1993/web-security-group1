@@ -29,11 +29,9 @@ $result  =[
     'user_fs'=>[],
 ];
 
-print_r(get_user_info($user_id));die;
 
 $result['user_info'] = get_user_info($user_id);
 $result['user_fs'] = get_fs($user_id);
-
 
 print_r($result);
 die;
