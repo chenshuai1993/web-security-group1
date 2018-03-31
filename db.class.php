@@ -8,8 +8,8 @@ $pass='123123.';          //对应的密码
 $dsn="$dbms:host=$host;dbname=$dbName";
 
 try {
-    //$db = new PDO($dsn, $user, $pass,array(PDO::ATTR_PERSISTENT => true)); //初始化一个PDO对象
-    $db = mysqli_connect($host,$user,$pass,$dbName);
+    $db = new PDO($dsn, $user, $pass,array(PDO::ATTR_PERSISTENT => true)); //初始化一个PDO对象
+    #$db_mysql = mysqli_connect($host,$user,$pass,$dbName);
 } catch (PDOException $e) {
     die ("Error!: " . $e->getMessage() . "<br/>");
 }
