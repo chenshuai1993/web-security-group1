@@ -6,9 +6,9 @@
  * Time: 16:02
  */
 
-if (!empty($_SESSION['user_id'])) {
-    $userInfo['user_id'] = $_SESSION['user_id'];
-    $userInfo['user_name'] = $_SESSION['user_name'];
+if (!empty($_SESSION['userid'])) {
+    $userInfo['userid'] = $_SESSION['user_id'];
+    $userInfo['username'] = $_SESSION['user_name'];
 } else {
     $arr = [
         'status' => 500,
