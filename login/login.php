@@ -22,5 +22,5 @@ if($result_arr&&   $result_arr[0]['password']==$password){
     header('Location: ../indexList.php');
 }else{
 //    header('Location: http:../login.htm');
-    echo "<script>history.go(-1)</script>";
+    echo "<script>alert('登录失败');history.go(-1)</script>";
 }
