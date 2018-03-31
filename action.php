@@ -2,12 +2,14 @@
 session_start();
 include_once 'db.class.php';
 
-function follow()
+follow($db);
+
+function follow($db)
 {
-    $followId     = $_GET['id'];
-    $userId       = $_SESSION['user_id'];
+    $followId     = $_POST['id'];
+    $userId       = $_SESSION['userid'] ? $_SESSION['userId'] : 100;
     $followSql    = "insert into fs(user_id,follow_id) value($userId,$followId),($followId,$userId)";
-    $smt = $db->prepare($sql);
+    $smt = $db->prepare($followSql);
     if($smt->execute()){
         echo $smt->rowCount();
     }
@@ -15,8 +17,8 @@ function follow()
 
 function unfollow()
 {
-    $userId       = $_SESSION['user_id'];
-    $cancleUserId = $_GET['id'];
+    $userId       = $_SESSION['userid'];
+    $cancleUserId = $_POST['id'];
     $ids = $userId .','.$cancleUserId;
     $sql = "delete from user where id in ($ids)";
     $smt = $db->prepare($sql);
