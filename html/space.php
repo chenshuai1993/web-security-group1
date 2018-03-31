@@ -7,9 +7,9 @@
     <meta name="author" content="">
     <title>查看用户-基于Redis实现的简单微博系统</title>
 
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="static/css/mybase.css">
+    <link rel="stylesheet" href="./html/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./html/static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./html/static/css/mybase.css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,8 +25,12 @@
 
     <div class="container">
 	<div class="user_nav pull-right">
-		  <a type="button" class="btn btn-default" role="button" href="login.htm">登录</a>
-		  <a type="button" class="btn btn-default" role="button" href="register.htm">注册</a>
+        <?php if (empty($userInfo)) { ?>
+            <a type="button" class="btn btn-default" role="button" href="login.htm">登录</a>
+            <a type="button" class="btn btn-default" role="button" href="register.htm">注册</a>
+        <?php } else { ?>
+            <p> 欢迎 <span class="label label-success"><?php echo $userInfo['user_name']; ?></span> ，<a href="#">退出</a></p>
+        <?php } ?>
 	</div>
       <div class="header">
 		<h3 class="text-muted"><a style="vertical-align: bottom;" href="index.htm">简单微博系统</a></h3>
@@ -35,15 +39,15 @@
 
 <div class="row">
   <div class="col-md-2" style="margin-top: 20px;">
-    <a href="#" class="thumbnail">
-      <img data-src="holder.js/100x100"  style="width: 100px; height: 100px;" >
-    </a>
+<!--    <a href="#" class="thumbnail">-->
+<!--      <img data-src="holder.js/100x100"  style="width: 100px; height: 100px;" >-->
+<!--    </a>-->
   </div>
   <div class="col-md-10">
-  	<h2 >张三丰</h2>
-  	<p>微博：12322</p>
-  	<p>粉丝：12322</p>
-  	<p><a href="#" class="btn btn-primary" role="button" id="follow">关注</a> <a href="#" class="btn btn-default" role="button">取消</a></p>
+  	<h2 ><?php echo $result[0]['username']; ?></h2>
+  	<p>微博：<?php echo $result[0]['bbs']; ?></p>
+  	<p>粉丝：<?php echo $result[0]['fs']; ?></p>
+  	<p><a href="javascript:;" class="btn btn-primary" role="button" id="follow" data-id="<?php echo $lookUid ; ?>">关注</a> <a href="javascript:;  " class="btn btn-default" role="button">取消</a></p>
   </div>
 </div>
 
@@ -73,10 +77,27 @@
 
 
     </div>
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/holder.min.js"></script>
+<script src="./html/static/js/jquery.min.js"></script>
+<script src="./html/static/js/bootstrap.min.js"></script>
+<script src="./html/static/js/holder.min.js"></script>
 <script type="text/javascript">
+$('body').on('click','#follow',function(){
+  var url = '../web-security-group1/action.php';
+  var id  = $('#follow').data('id');
+  var data = {id:id};
 
+  $.ajax({
+    type:'post',
+    url: url,
+    data:data,
+    dataType:'json',
+    success:function(res){
+      alert(res.msg);
+    },
+    error:function(request,status,err){
+      console.log(request);
+    }
+  });
+})
 </script>
 </body></html>

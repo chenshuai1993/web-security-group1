@@ -9,6 +9,13 @@
 if (!empty($_SESSION['userid'])) {
     $userInfo['userid'] = $_SESSION['user_id'];
     $userInfo['username'] = $_SESSION['user_name'];
+} else {
+    $arr = [
+        'status' => 500,
+        'message' => '请登录',
+        'data' => [],
+    ];
+    echo json_encode($arr, JSON_UNESCAPED_UNICODE);exit;
 }
 
 require('./db.class.php');
@@ -20,4 +27,10 @@ $sth = $db->prepare($sql);
 $sth->execute();
 $result = $sth->fetchAll();
 
-require('./html/index.php');
+$arr = [
+    'status' => 200,
+    'message' => '提交成功',
+    'data' => $result,
+];
+
+echo json_encode($arr, JSON_UNESCAPED_UNICODE);exit;
