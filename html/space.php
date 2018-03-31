@@ -54,7 +54,7 @@
 	<hr />
 
         <?php if($fs_id == 3): ?>
-            <form id="bbs"  action="http://localhost/web-security-group1/bbs" method="post">
+            <form id="bbs"  action="http://localhost/web-security-group1/bbs.php" method="post">
                 内容:<input name="content" id="content" type="text">
                 <input name="to_userid" id="to_userid" type="hidden" value="3">
                 <input type="submit" value="提交" >
