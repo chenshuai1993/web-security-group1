@@ -6,6 +6,7 @@
  * Time: 16:02
  */
 
+require('./db.class.php');
 
 $user_id = isset($_SESSION['userid']) ? $_SESSION['userid'] : 1;
 
@@ -19,9 +20,8 @@ if(empty($_GET['uid']) || !is_numeric($_GET['uid'])) {
 }
 $lookUid = $_GET['uid'];
 
-require('./db.class.php');
 
-require('./html/space.php');
+
 
 
 $result  =[
@@ -57,6 +57,7 @@ function get_fs($user_id){
     return $sth->fetchAll();
 }
 
+require('./html/space.php');
 
 
 
