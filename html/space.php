@@ -25,7 +25,7 @@
 
     <div class="container">
 	<div class="user_nav pull-right">
-        <?php if (empty($userInfo)) { ?>
+        <?php if (empty($result['user_info'])) { ?>
             <a type="button" class="btn btn-default" role="button" href="login.htm">登录</a>
             <a type="button" class="btn btn-default" role="button" href="register.htm">注册</a>
         <?php } else { ?>
@@ -44,9 +44,9 @@
 <!--    </a>-->
   </div>
   <div class="col-md-10">
-  	<h2 ><?php echo $result[0]['username']; ?></h2>
-  	<p>微博：<?php echo $result[0]['bbs']; ?></p>
-  	<p>粉丝：<?php echo $result[0]['fs']; ?></p>
+  	<h2 ><?php echo $result['user_info']['username']; ?></h2>
+  	<p>微博：<?php echo $result['user_info']['bbs']; ?></p>
+  	<p>粉丝：<?php echo $result['user_info']['fs']; ?></p>
   	<p><a href="javascript:;" class="btn btn-primary" role="button" id="follow" data-id="<?php echo $lookUid ; ?>">关注</a> <a href="javascript:;  " class="btn btn-default" role="button">取消</a></p>
   </div>
 </div>

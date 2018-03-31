@@ -21,7 +21,7 @@ $lookUid = $_GET['uid'];
 
 require('./db.class.php');
 
-#require('./html/space.php');
+require('./html/space.php');
 
 
 $result  =[
@@ -32,22 +32,23 @@ $result  =[
 
 $result['user_info'] = get_user_info($user_id);
 $result['user_fs'] = get_fs($user_id);
+return $result;
 
-print_r($result);
-die;
 
-#
+
+
+#user_info
 function get_user_info($user_id){
     global $db;
     $sql = 'select id,username,bbs,fs from user where id='.$user_id;
     $sth = $db->prepare($sql);
     $sth->execute();
-    return $sth->fetchAll();
+    return $sth->fetch();
 }
 
 
 
-#
+#fs
 function get_fs($user_id){
     global $db;
     $sql = 'select * from fs where user_id='.$user_id;
@@ -55,4 +56,9 @@ function get_fs($user_id){
     $sth->execute();
     return $sth->fetchAll();
 }
+
+
+
+
+
 
