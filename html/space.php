@@ -101,6 +101,12 @@ $('body').on('click','#follow',function(){
             var id = $(this).attr('id');
             window.location.href='http://localhost/web-security-group1/perInfo.php?uid='+id
         })
+
+
+
     })
 </script>
+
+
+
 </body></html>

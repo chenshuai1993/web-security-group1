@@ -37,7 +37,7 @@ $result  =[
 $result['user_info'] = get_user_info($user_id);
 $result['user_fs'] = get_fs($user_id);
 
-print_r($result);
+#print_r($result);
 
 
 
